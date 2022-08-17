@@ -28,14 +28,14 @@ app.use(cors())
 //Routes
 
 //GET
-app.get('/', async(req, res) => {
+app.get('/', (req, res) => {
     db.collection('animals').find().toArray()
-    try{
-        res.render('index.ejs')
-    }catch(error){
-        res.status(500).send({message: error.message})
-    }
-})
+      .then(results => {
+      res.render('index.ejs', {animals: results})
+      })
+      .catch(error => console.error(error))
+    
+  })
 
 //POST 
 
@@ -64,13 +64,13 @@ app.post('/animals', (req, res) => {
     )
     .then(result => {
       console.log(result)
-      res.json('Succes')
+      res.json('Success')
     })
     .catch(err => console.log(err))
   })
 
   //Delete
-  
+
   app.delete('/delete', (req, res)=>{
     db.collection('animals').deleteOne(
       {animalName: req.body.animalName}
