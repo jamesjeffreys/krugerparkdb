@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY APP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1> Kruger National DB</h1>
+  <form action="/animals" method="POST">
+    <input type="text" placeholder="Animal Name" name="animalName"><br>
+    <input type='text' placeholder="Type" name="type"><br>
+    <input type="text" placeholder="Scientific Name" name="scientificName"><br>
+    <input type="text" placeholder="Appearance" name="appearance"><br>
+    <input type="text" placeholder="Diet" name="diet"><br>
+    <input type="text" placeholder="Breeding" name="breeding"><br>
+    <input type="text" placeholder="Behavior" name="behavior"><br>
+    <input type="text" placeholder="Habitat" name="habitat"><br>
+    <input type="text" placeholder="Field Notes" name="fieldNotes"><br>
+    <input type="text" placeholder="Population Threat" name="populationThreat"><br>
+    <input type="text" placeholder="Interesting Facts" name="interestingFacts"><br>
+    <input type="text" placeholder="Image" name="image"><br>
+    <button type="submit" style="background-color: lightgreen;">Submit</button>
+    <button type="button" id="updateButton" style="background-color: lightblue ;">Update Entry</button>
+
+  </form>
+
+  <h2> Kruger National Park Database</h2>
+  <h2>Delete An Entry Here</h2>
+  <input type="text" placeholder="Animal To Delete" name="deleteInput" id="deleteInput">
+  <button type="button" id='deleteButton'>DELETE ANIMAL</button>
+<ul class="animals" style="list-style: none;">
+  <!-- Loop through quotes -->
+  <% for(var i = 0; i < animals.length; i++) {%>
+    <li class="species">      
+        
+      <h1><%= animals[i].animalName %></h1>
+      <p><em><%=animals[i].scientificName%></em></p>
+      <h3>Type</h3>
+      <h4><em><%= animals[i].type %></em><h4>
+      <h3>Appearance</h3>
+      <p><%= animals[i].appearance%></p>
+      <h3>Diet</h3>
+      <p><%= animals[i].diet%></p>
+      <h3>Breeding</h3>
+      <p><%= animals[i].breeding%></p>
+      <h3>Behavior</h3>
+      <p><%= animals[i].behavior%></p>
+      <h3>Habitat</h3>
+      <p><%= animals[i].habitat%></p>
+      <h3>Field Notes</h3>
+      <p><%= animals[i].fieldNotes%></p>
+      <h3>Population Threat</h3>
+      <p><%= animals[i].populationThreat%></p>
+      <h3>Interetsing Facts</h3>
+      <p><%= animals[i].interestingFacst%></p>
+      <h3>Image</h3>
+      <img src= <%= animals[i].image %> >
+    </li>
+  <% } %>
+</ul>
+<script src="/public/main.js"></script>
+</body>
+</html>
