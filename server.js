@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 //POST 
 
 app.post('/animals', (req, res) => {
-    animalCollection.insertOne(req.body)
+    db.collection('animals').insertOne(req.body)
       .then(result => {
         res.redirect('/')
       })
