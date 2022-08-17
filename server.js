@@ -13,7 +13,7 @@ collection
 MongoClient.connect(dbConnectionString)
 .then(client => {
     console.log('Connected to DB')
-    db = client.db(dbname)
+    db = client.db('kruger-national-park')
     collection = db.collection('animals')
 })
 
