@@ -26,13 +26,61 @@ app.use(express.json())
 app.use(cors())
 
 //Routes
+
+//GET
 app.get('/', async(req, res) => {
+    db.collection('animals').find().toArray()
     try{
         res.render('index.ejs')
     }catch(error){
         res.status(500).send({message: error.message})
     }
 })
+
+//POST 
+
+app.post('/animals', (req, res) => {
+    animalCollection.insertOne(req.body)
+      .then(result => {
+        res.redirect('/')
+      })
+      .catch(error => console.error(error))
+  })
+
+  //UPDATE
+  app.put('/update', (req, res)=>{
+ 
+    Object.keys(req.body).forEach(key => {
+      if(req.body[key] === null || req.body[key] === undefined || req.body[key] === ''){
+        delete req.body[key]
+      }
+    })
+    console.log(req.body)
+    db.collection('animals').findOneAndUpdate(
+      {animalName: req.body.animalName},
+      {
+        $set: req.body
+      }
+    )
+    .then(result => {
+      console.log(result)
+      res.json('Succes')
+    })
+    .catch(err => console.log(err))
+  })
+
+  //Delete
+  
+  app.delete('/delete', (req, res)=>{
+    db.collection('animals').deleteOne(
+      {animalName: req.body.animalName}
+    )
+    .then(result =>{
+      console.log('Entry Deleted')
+      res.json('Entry Deleted')
+    })
+    .catch(error => console.console.log(error))
+  })
 
 app.listen(process.env.PORT|| PORT, ()=>{
     console.log(`Server running on Port ${process.env.PORT}`)
