@@ -39,15 +39,14 @@ app.get('/', (req, res) => {
 
 //API Route
 
-app.get('/api', (request, response) => {
-  //const animalName = request.params.animalName.toLowerCase()
-      db.collection('animals').find().toArray()
-      .then(results => {
-          console.log(results)
-          response.json(results)
-      })
-      .catch(error => console.error(error))
-  })
+app.get('/api/:animalName', (request, response) => {
+  const animalName = request.params.animalName.toLowerCase()
+  if(collection[animalName]){
+      response.json(collection[animalName])
+  } else {
+      response.json(collection['Animal not in the Kruger'])
+  }
+})
 
 //POST 
 
