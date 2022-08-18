@@ -37,6 +37,17 @@ app.get('/', (req, res) => {
     
   })
 
+//API Route
+
+app.get('/api/:animalName', (req, res) => {
+  const animalName = req.params.animalName.toLowerCase()
+  if(animals[animalName]){
+      response.json(animals[animalName])
+  } else {
+      response.json(aliens['Not an Animal'])
+  }
+})
+
 //POST 
 
 app.post('/animals', (req, res) => {
