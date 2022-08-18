@@ -36,6 +36,7 @@ async function updateEntry(){
 //Delete Function ---------------------------------------------------
 
 async function deleteEntry(){
+    alert('working')
     const input = document.getElementById('deleteInput')
         try{
             const res = await fetch('delete', {
