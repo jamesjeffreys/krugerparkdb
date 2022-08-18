@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 //API Route
 
 app.get('/api', (request, response) => {
-  const animalName = request.params.animalName.toLowerCase()
+  //const animalName = request.params.animalName.toLowerCase()
       db.collection.find().toArray()
       .then(results => {
           console.log(results)
