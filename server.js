@@ -15,6 +15,18 @@ MongoClient.connect(dbConnectionString)
     console.log('Connected to DB')
     db = client.db('kruger-national-park')
     collection = db.collection('animals')
+
+    //API Route
+
+app.get('/api/:animalName', (request, response) => {
+  const animalName = request.params.animalName.toLowerCase()
+      collection.find({name: animalName}).toArray()
+      .then(results => {
+          console.log(results)
+          response.json(results[0])
+      })
+      .catch(error => console.error(error))
+  })
 })
 
 //Middleware
@@ -37,17 +49,7 @@ app.get('/', (req, res) => {
     
   })
 
-//API Route
 
-app.get('/api/:animalName', (request, response) => {
-  const animalName = request.params.animalName.toLowerCase()
-      collection.find({name: animalName}).toArray()
-      .then(results => {
-          console.log(results)
-          response.json(results[0])
-      })
-      .catch(error => console.error(error))
-  })
 
 //POST 
 
