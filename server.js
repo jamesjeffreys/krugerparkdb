@@ -37,9 +37,9 @@ app.get('/', (req, res) => {
 
 //API Route
 
-    app.get('/api/:alienName', (request, response) => {
+    app.get('/api/:animalName', (request, response) => {
       const animalName = request.params.animalName.toLowerCase()
-          collection.find({name: aliensName}).toArray()
+          collection.find({name: animalName}).toArray()
           .then(results => {
               console.log(results)
               response.json(results[0])
