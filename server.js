@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
 
 app.get('/api', (request, response) => {
   //const animalName = request.params.animalName.toLowerCase()
-      db.collection.find('animals').find().toArray()
+      db.collection('animals').find().toArray()
       .then(results => {
           console.log(results)
           response.json(results)
