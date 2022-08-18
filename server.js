@@ -38,13 +38,12 @@ app.get('/', (req, res) => {
 //API Route
 
     app.get('/api/:animalName', (request, response) => {
-      const animalName = request.params.animalName.toLowerCase()
-          collection.find({name: animalName}).toArray()
-          .then(results => {
-              console.log(results)
-              response.json(results[0])
-          })
-          .catch(error => console.error(error))
+      db.collection('animals').find().toArray()
+      .then(results => {
+      comnsole.log(results)  
+      response.json()
+      })
+      .catch(error => console.error(error))
       })
 
 //POST 
