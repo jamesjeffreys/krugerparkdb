@@ -42,10 +42,10 @@ app.get('/', (req, res) => {
 app.get('/api/:animalName', (req, res) => {
   const animalName = req.params.animalName.toLowerCase()
   console.log(animalName)
-  if(animals[animalName]){
-      res.json(animals[animalName])
+  if(collection[animalName]){
+      res.json(collection[animalName])
   } else {
-      res.json(aliens['Not an Animal'])
+      res.json(collection['Not an Animal'])
   }
 })
 
