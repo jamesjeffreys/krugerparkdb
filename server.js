@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 
 //API Route
 
-    app.get('/api', (request, response) => {
+    app.get('/api/:animalName', (request, response) => {
       db.collection('animals').find().toArray()
       .then(results => {
       console.log(results)  
