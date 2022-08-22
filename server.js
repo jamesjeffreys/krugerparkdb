@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
       db.collection('animals').find().toArray()
       .then(results => {
       console.log(results)  
-      response.json()
+      response.json({animals: results})
       })
       .catch(error => console.error(error))
       })
