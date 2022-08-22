@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
     app.get('/api', (request, response) => {
       db.collection('animals').find().toArray()
       .then(results => {
-      comnsole.log(results)  
+      console.log(results)  
       response.json()
       })
       .catch(error => console.error(error))
